@@ -4,6 +4,8 @@ Spyder Editor
 9
 This is a temporary script file.
 """
+import os
+
 import speech_recognition as sr
 import pyaudio
 import pyttsx3
@@ -71,7 +73,7 @@ def play_siri():
        talk(pyjokes.get_joke())
     elif 'weather' in reply:
         city='CHENNAI'
-        owm=pyowm.OWM('d210f7ffe0c6dd3832e90f9c1ccbb9f6')
+        owm=pyowm.OWM(os.environ['OPENWEATHER_API_KEY'])
         mgr=owm.weather_manager()
         location=mgr.weather_at_place(city+',IND')
         weather=location.weather
